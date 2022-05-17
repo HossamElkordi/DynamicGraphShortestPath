@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.util.HashMap;
@@ -13,17 +14,54 @@ public class Start {
         while(scan.hasNextLine()){
             input = scan.nextLine();
             splitted = input.split("=");
-            out.put(splitted[0],splitted[1]);
+            out.put(splitted[0], splitted[1]);
         }
         return out;
     }
-    public static void main(String[] args) throws RemoteException, FileNotFoundException {
+    public static void main(String[] args) throws RemoteException, FileNotFoundException, InterruptedException {
 
-        Scanner scan=new Scanner(new File("C:\\Users\\ahm_e\\IntelliJIDEAProjects\\DynamicGraphShortestPath\\system.properties"));
+        Scanner scan = new Scanner(new File("system.properties"));
         HashMap<String,String>prop=read(scan);
         scan.close();
         System.setProperty("java.rmi.server.hostname", prop.get("GSP.server"));
         LocateRegistry.createRegistry(Integer.parseInt(prop.get("GSP.rmiregistry.port")));
-        Server srv=new Server(Integer.parseInt(prop.get("GSP.server.port")),prop.get("GSP.server"));
+        Thread serverThread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                Server srv = new Server(Integer.parseInt(prop.get("GSP.server.port")), prop.get("GSP.server"));
+            }
+        });
+
+        Thread clientThread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    Client clt = new Client(prop.get("GSP.server"), "client1", "log1");
+                } catch (RemoteException | NotBoundException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        Thread client2Thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    Client clt = new Client(prop.get("GSP.server"), "client2", "log2");
+                } catch (RemoteException | NotBoundException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        serverThread.start();
+        Thread.sleep(1000);
+        clientThread.start();
+        client2Thread.start();
+
+        clientThread.join();
+        client2Thread.join();
+        serverThread.join();
+
     }
 }

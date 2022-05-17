@@ -4,11 +4,11 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 public class Server{
-    public Server(int port,String ip) {
+    public Server(int port, String ip) {
         try {
 
             // Instantiating the implementation class
-            Graph g = new Graph("C:\\Users\\ahm_e\\IntelliJIDEAProjects\\DynamicGraphShortestPath\\input");
+            Graph g = new Graph("input");
             System.out.println("R");
 
             // Exporting the object of implementation class
