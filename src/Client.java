@@ -8,7 +8,7 @@ public class Client {
         try {
             // Getting the registry
             // Here ip should also be passed as argument or parameter from class Start
-            Registry registry = LocateRegistry.getRegistry();
+            Registry registry = LocateRegistry.getRegistry("192.168.1.7");
 
             // Looking up the registry for the remote object
             GraphInterface stub = (GraphInterface) registry.lookup("Update");
