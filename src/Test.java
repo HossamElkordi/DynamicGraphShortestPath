@@ -5,17 +5,8 @@ import java.util.*;
 public class Test {
     public static void main(String[] args) throws FileNotFoundException{
         GClass g = new GClass("input");
-        g.printGraph();
-        g.add(3, 4);
-        g.printGraph();
-        System.out.println(g.query(1, 4));
-        System.out.println();
-        g.remove(2, 4);
-        g.printGraph();
-        System.out.println(g.query(1, 4));
-        g.remove(3, 4);
-        g.printGraph();
-        System.out.println(g.query(2, 4));
+        System.out.println(g.query(1, 3));
+
     }
 }
 

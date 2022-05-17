@@ -12,10 +12,10 @@ public class Graph implements GraphInterface{
 
 
     public Graph() throws RemoteException {
-        /*adjList = new HashMap<Integer, Set<Integer>>();
+        adjList = new HashMap<Integer, Set<Integer>>();
         Scanner scan = new Scanner(System.in);
         this.readInitialGraph(scan);
-        scan.close();*/
+        scan.close();
     }
 
 
@@ -25,6 +25,15 @@ public class Graph implements GraphInterface{
         Scanner scan = new Scanner(file);
         this.readInitialGraph(scan);
         scan.close();
+        printGraph();
+    }
+    private void printGraph(){
+        for(int n : this.adjList.keySet()){
+            System.out.print(n + " -> ");
+            for(int n1 : this.adjList.get(n)) System.out.print(n1 + " ");
+            System.out.println();
+        }
+        System.out.println();
     }
 
     private void readInitialGraph(Scanner scan) throws RemoteException {
@@ -40,6 +49,7 @@ public class Graph implements GraphInterface{
 
 
     private int query(int n1, int n2) throws RemoteException {
+        System.out.println(n1+" "+n2);
         HashMap<Integer, Integer> pred = new HashMap<Integer, Integer>();
         HashMap<Integer, Integer> dist = new HashMap<Integer, Integer>();
         Queue<Integer> queue = new LinkedList<Integer>();
@@ -47,7 +57,6 @@ public class Graph implements GraphInterface{
         pred.put(n1, -1);
         dist.put(n1, 0);
         int cur;
-
         while(!queue.isEmpty()){
             cur = queue.poll();
             if(cur == n2) return dist.get(n2);
@@ -85,9 +94,9 @@ public class Graph implements GraphInterface{
                 if(s.equals("F")) break;
                 qSplit = s.split(" ");
                 switch (qSplit[0]) {
-                    case "A" -> this.add(Integer.parseInt(qSplit[1]), Integer.parseInt(qSplit[2]));
-                    case "R" -> this.remove(Integer.parseInt(qSplit[1]), Integer.parseInt(qSplit[2]));
-                    case "Q" ->
+                    case "A" : this.add(Integer.parseInt(qSplit[1]), Integer.parseInt(qSplit[2]));break;
+                    case "R" : this.remove(Integer.parseInt(qSplit[1]), Integer.parseInt(qSplit[2]));break;
+                    case "Q" :
                             res.append(this.query(Integer.parseInt(qSplit[1]), Integer.parseInt(qSplit[2]))).append("\n");
                 }
             }
