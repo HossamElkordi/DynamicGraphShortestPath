@@ -57,12 +57,20 @@ public class Graph implements GraphInterface{
         pred.put(n1, -1);
         dist.put(n1, 0);
         int cur;
-
+        if(!this.adjList.containsKey(n1)||!this.adjList.containsKey(n2)){
+            return -1;
+        }
         while(!queue.isEmpty()){
-            cur = queue.poll();
+            //do{
+                //if(queue.isEmpty())
+               //     return -1;
+                cur = queue.poll();
+            //}while(!this.adjList.containsKey(cur));
             if(cur == n2) return dist.get(n2);
             for(int n : this.adjList.get(cur)){
                 if(pred.containsKey(n)) continue;
+                if(!this.adjList.containsKey(n))
+                    System.out.println("-->"+n);
                 queue.add(n);
                 pred.put(n, cur);
                 dist.put(n, 1 + dist.get(cur));
@@ -82,7 +90,12 @@ public class Graph implements GraphInterface{
         if(!adjList.containsKey(n1)) return;
         Set<Integer> adj = adjList.get(n1);
         adj.remove(n2);
-        if(adj.size() == 0) adjList.remove(n1);
+        if(adj.size() == 0) {
+            adjList.remove(n1);
+            for(int k:adjList.keySet()){
+                adjList.get(k).remove(n1);
+            }
+        }
     }
 
 

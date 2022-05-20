@@ -1,4 +1,3 @@
-import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
@@ -8,7 +7,7 @@ public class Server{
         try {
 
             // Instantiating the implementation class
-            Graph g = new Graph("input");
+            Graph g = new Graph("D:\\aa\\DynamicGraphShortestPath\\input");
             System.out.println("R");
 
             // Exporting the object of implementation class

@@ -1,12 +1,15 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.rmi.RemoteException;
 import java.util.*;
 
 public class Test {
-    public static void main(String[] args) throws FileNotFoundException{
-        GClass g = new GClass("input");
+    public static void main(String[] args) throws FileNotFoundException, RemoteException {
+        GClass g = new GClass("D:\\aa\\DynamicGraphShortestPath\\input");
+        g.printGraph();
         System.out.println(g.query(1, 3));
-
+        g.remove(4,1);
+        g.printGraph();
     }
 }
 
@@ -71,10 +74,15 @@ class GClass{
     }
 
 
-    public void remove(int n1, int n2){
+    public void remove(int n1, int n2) throws RemoteException {
         if(!adjList.containsKey(n1)) return;
         Set<Integer> adj = adjList.get(n1);
         adj.remove(n2);
-        if(adj.size() == 0) adjList.remove(n1);
+        if(adj.size() == 0) {
+            adjList.remove(n1);
+            for(int k:adjList.keySet()){
+                adjList.get(k).remove(n1);
+            }
+        }
     }
 }

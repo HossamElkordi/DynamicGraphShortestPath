@@ -20,7 +20,7 @@ public class Start {
     }
     public static void main(String[] args) throws RemoteException, FileNotFoundException, InterruptedException {
 
-        Scanner scan = new Scanner(new File("system.properties"));
+        Scanner scan = new Scanner(new File("D:\\aa\\DynamicGraphShortestPath\\src\\system.properties"));
         HashMap<String,String>prop=read(scan);
         scan.close();
         System.setProperty("java.rmi.server.hostname", prop.get("GSP.server"));
@@ -36,7 +36,7 @@ public class Start {
             @Override
             public void run() {
                 try {
-                    Client clt = new Client(prop.get("GSP.server"), "client1", "log1");
+                    Client clt = new Client(prop.get("GSP.server"), "client1", "D:\\aa\\DynamicGraphShortestPath\\src\\log1");
                 } catch (RemoteException | NotBoundException e) {
                     throw new RuntimeException(e);
                 }
@@ -47,7 +47,7 @@ public class Start {
             @Override
             public void run() {
                 try {
-                    Client clt = new Client(prop.get("GSP.server"), "client2", "log2");
+                    Client clt = new Client(prop.get("GSP.server"), "client2", "D:\\aa\\DynamicGraphShortestPath\\src\\log2");
                 } catch (RemoteException | NotBoundException e) {
                     throw new RuntimeException(e);
                 }
