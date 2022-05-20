@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Start {
-    private static HashMap<String,String> read(Scanner scan){
-        String input = "";
-        String[] splitted = null;
-        HashMap<String,String>out=new HashMap<>();
+    private static HashMap<String,String> readProps(Scanner scan){
+        String input;
+        String[] splitted;
+        HashMap<String,String>out = new HashMap<>();
         while(scan.hasNextLine()){
             input = scan.nextLine();
             splitted = input.split("=");
@@ -19,48 +19,52 @@ public class Start {
         return out;
     }
     public static void main(String[] args) throws RemoteException, FileNotFoundException, InterruptedException {
-
+        // Read System's Properties
         Scanner scan = new Scanner(new File("D:\\aa\\DynamicGraphShortestPath\\src\\system.properties"));
-        HashMap<String,String>prop=read(scan);
+        HashMap<String, String> prop = readProps(scan);
         scan.close();
+
+        // Setting Server IP and Create the Naming Registry
         System.setProperty("java.rmi.server.hostname", prop.get("GSP.server"));
         LocateRegistry.createRegistry(Integer.parseInt(prop.get("GSP.rmiregistry.port")));
+
+        // Create the server node (thread) listening on the specified port number
         Thread serverThread = new Thread(new Runnable(){
             @Override
             public void run() {
-                Server srv = new Server(Integer.parseInt(prop.get("GSP.server.port")), prop.get("GSP.server"));
+                new Server(Integer.parseInt(prop.get("GSP.server.port")), prop.get("GSP.server"),
+                        prop.get("GSP.node0"), "D:\\aa\\DynamicGraphShortestPath\\input");
             }
         });
 
-        Thread clientThread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                try {
-                    Client clt = new Client(prop.get("GSP.server"), "client1", "D:\\aa\\DynamicGraphShortestPath\\src\\log1");
-                } catch (RemoteException | NotBoundException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        // Paths to files with randomly generated queries
+        String[] qFiles = {"D:\\aa\\DynamicGraphShortestPath\\src\\MyFile.txt",
+                            "D:\\aa\\DynamicGraphShortestPath\\src\\MyFile1.txt"};
 
-        Thread client2Thread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                try {
-                    Client clt = new Client(prop.get("GSP.server"), "client2", "D:\\aa\\DynamicGraphShortestPath\\src\\log2");
-                } catch (RemoteException | NotBoundException e) {
-                    throw new RuntimeException(e);
+        // Create clients' nodes (threads)
+        Thread[] clientsNodes = new Thread[Integer.parseInt(prop.get("GSP.numberOfnodes")) - 1];
+        for(int i = 0; i < clientsNodes.length; ++i){
+            int id = i + 1;
+            clientsNodes[i] = new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        new Client(prop.get("GSP.server"), qFiles, id, prop.get("GSP.node" + id));
+                    } catch (RemoteException | NotBoundException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
-            }
-        });
+            });
+        }
 
         serverThread.start();
         Thread.sleep(1000);
-        clientThread.start();
-        client2Thread.start();
 
-        clientThread.join();
-        client2Thread.join();
+        for(Thread t : clientsNodes)
+            t.start();
+
+        for(Thread t : clientsNodes)
+            t.join();
+
         serverThread.join();
 
     }

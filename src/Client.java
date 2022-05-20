@@ -15,32 +15,35 @@ public class Client {
     private File logFile;
     private List<String> addRemove, query;
     private Random rand;
-    public Client(String ip, String qFile, String logfile) throws RemoteException, NotBoundException {
+    private String nodeName;
+    public Client(String ip, String[] qFiles, int nodeId, String nodeName) throws RemoteException, NotBoundException {
         try{
             Registry registry = LocateRegistry.getRegistry(ip);
             GraphInterface stub = (GraphInterface) registry.lookup("Update");
-            this.logFile = new File(logfile);
-            rand = new Random();
+            this.nodeName = nodeName;
+            long start;
+            this.logFile = new File("log" + nodeId);
+            this.rand = new Random(nodeId);
+            this.addRemove = this.readCommands(qFiles[0]);
+            this.query = this.readCommands(qFiles[1]);
+
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now;
             while(true) {
-                addRemove = this.readCommands("D:\\aa\\DynamicGraphShortestPath\\src\\MyFile.txt");
-                query = this.readCommands("D:\\aa\\DynamicGraphShortestPath\\src\\MyFile1.txt");
-
                 String queries = this.readQueries(0.5f);
                 System.out.println(queries);
                 now = LocalDateTime.now();
-                long start = System.nanoTime();
+                start = System.nanoTime();
                 String res = stub.executeQuery(queries);
-                start=System.nanoTime()-start;
-                this.logResults(dtf.format(now)+": sending batch\n"+queries+"\n");
+                start = System.nanoTime() - start;
+                this.logResults(dtf.format(now) + ": sending batch\n" + queries + "\n");
                 System.out.println("result");
                 System.out.println(res);
-                System.out.println("took ns: "+start);
+                System.out.println("took ns: " + start);
                 now = LocalDateTime.now();
-                this.logResults(dtf.format(now)+": Received response "+"Response time(ns):"+start+"\n"+res+"\n");
+                this.logResults(dtf.format(now) + ": Received response " + "Response time(ns):" + start + "\n" + res + "\n");
                 // Sleep, choose a random amount first
-                Thread.sleep(rand.nextInt(1000) );
+                Thread.sleep(rand.nextInt(1000));
             }
         } catch (Exception e) {
             System.err.println("Client exception: " + e.toString());
@@ -72,7 +75,7 @@ public class Client {
     }
 
     private List<String> readCommands(String commandType) throws FileNotFoundException {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         Scanner scan = new Scanner(new File(commandType));
         while(scan.hasNextLine()) list.add(scan.nextLine());
         scan.close();
@@ -80,12 +83,8 @@ public class Client {
     }
 
     private void logResults(String res) throws IOException {
-
         FileWriter fw = new FileWriter(this.logFile,true);
-        //Writer fileWriter = new FileWriter(this.logFile, true);
-        //fileWriter.write(res);
         fw.append(res);
         fw.close();
-        //fileWriter.close();
     }
 }

@@ -3,12 +3,13 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 public class Server{
-    public Server(int port, String ip) {
-        try {
 
+    String nodeName;
+    public Server(int port, String ip, String nodeName, String initialGraph) {
+        try {
+            this.nodeName = nodeName;
             // Instantiating the implementation class
-            Graph g = new Graph("D:\\aa\\DynamicGraphShortestPath\\input");
-            System.out.println("R");
+            Graph g = new Graph(initialGraph);
 
             // Exporting the object of implementation class
             // (here we are exporting the remote object to the stub)

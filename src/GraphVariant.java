@@ -5,30 +5,31 @@ import java.util.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Graph implements GraphInterface{
+public class GraphVariant implements GraphInterface{
 
     private HashMap<Integer, Set<Integer>> adjList;
+    private Map<Integer, Map<Integer, Integer>> distances;
     private Lock lock = new ReentrantLock();
 
-
-    public Graph() throws RemoteException {
-        adjList = new HashMap<Integer, Set<Integer>>();
+    public GraphVariant() throws RemoteException {
+        adjList = new HashMap<>();
         Scanner scan = new Scanner(System.in);
         this.readInitialGraph(scan);
-        System.out.println("R");
         scan.close();
+        printGraph();
+        distances = totalDistances();
     }
 
-
-    public Graph(String path) throws FileNotFoundException, RemoteException {
-        adjList = new HashMap<Integer, Set<Integer>>();
+    public GraphVariant(String path) throws FileNotFoundException, RemoteException {
+        adjList = new HashMap<>();
         File file = new File(path);
         Scanner scan = new Scanner(file);
         this.readInitialGraph(scan);
-        System.out.println("R");
         scan.close();
         printGraph();
+        distances = totalDistances();
     }
+
     private void printGraph(){
         for(int n : this.adjList.keySet()){
             System.out.print(n + " -> ");
@@ -50,29 +51,35 @@ public class Graph implements GraphInterface{
     }
 
 
-    private int query(int n1, int n2){
-
-        HashMap<Integer, Integer> pred = new HashMap<Integer, Integer>();
-        HashMap<Integer, Integer> dist = new HashMap<Integer, Integer>();
-        Queue<Integer> queue = new LinkedList<Integer>();
+    private Map<Integer, Map<Integer, Integer>> totalDistances(){
+        Map<Integer, Map<Integer, Integer>> dist = new HashMap<>();
+        for(int n1 : adjList.keySet()){
+            Map<Integer, Integer> destDist = new HashMap<>();
+            for(int n2 : adjList.keySet()){
+                if(n1 != n2) destDist.put(n2, simpleShortestDIstance(n1, n2));
+            }
+            dist.put(n1, destDist);
+        }
+        return dist;
+    }
+    
+    private int simpleShortestDIstance(int n1, int n2){
+        if(!this.adjList.containsKey(n1) || !this.adjList.containsKey(n2)){
+            return -1;
+        }
+        if(n1 == n2) return 0;
+        HashMap<Integer, Integer> pred = new HashMap<>();
+        HashMap<Integer, Integer> dist = new HashMap<>();
+        Queue<Integer> queue = new LinkedList<>();
         queue.add(n1);
         pred.put(n1, -1);
         dist.put(n1, 0);
         int cur;
-        if(!this.adjList.containsKey(n1)||!this.adjList.containsKey(n2)){
-            return -1;
-        }
-        while(!queue.isEmpty()){
-            //do{
-                //if(queue.isEmpty())
-               //     return -1;
-                cur = queue.poll();
-            //}while(!this.adjList.containsKey(cur));
+        while(!queue.isEmpty()){;
+            cur = queue.poll();
             if(cur == n2) return dist.get(n2);
             for(int n : this.adjList.get(cur)){
                 if(pred.containsKey(n)) continue;
-                if(!this.adjList.containsKey(n))
-                    System.out.println("-->"+n);
                 queue.add(n);
                 pred.put(n, cur);
                 dist.put(n, 1 + dist.get(cur));
@@ -81,10 +88,19 @@ public class Graph implements GraphInterface{
         return -1;
     }
 
+    private int query(int n1, int n2){
+        if(!this.adjList.containsKey(n1) || !this.adjList.containsKey(n2)){
+            return -1;
+        }
+        if(n1 == n2) return 0;
+        return distances.get(n1).get(n2);
+    }
+
     private void add(int n1, int n2) throws RemoteException {
-        if(!adjList.containsKey(n1)) adjList.put(n1, new HashSet<Integer>());
-        if(!adjList.containsKey(n2)) adjList.put(n2, new HashSet<Integer>());
+        if(!adjList.containsKey(n1)) adjList.put(n1, new HashSet<>());
+        if(!adjList.containsKey(n2)) adjList.put(n2, new HashSet<>());
         adjList.get(n1).add(n2);
+        distances = totalDistances();
     }
 
 
@@ -98,10 +114,10 @@ public class Graph implements GraphInterface{
                 adjList.get(k).remove(n1);
             }
         }
+        distances = totalDistances();
     }
 
-
-    public String executeQuery(String queries) throws RemoteException{
+    public String executeQuery(String queries) throws RemoteException {
         lock.lock();
         StringBuilder res = new StringBuilder();
         try{
@@ -114,7 +130,7 @@ public class Graph implements GraphInterface{
                     case "A" : this.add(Integer.parseInt(qSplit[1]), Integer.parseInt(qSplit[2]));break;
                     case "R" : this.remove(Integer.parseInt(qSplit[1]), Integer.parseInt(qSplit[2]));break;
                     case "Q" :
-                            res.append(this.query(Integer.parseInt(qSplit[1]), Integer.parseInt(qSplit[2]))).append("\n");
+                        res.append(this.query(Integer.parseInt(qSplit[1]), Integer.parseInt(qSplit[2]))).append("\n");
                 }
             }
 
