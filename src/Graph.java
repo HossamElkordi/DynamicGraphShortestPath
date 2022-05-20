@@ -1,6 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -9,25 +13,55 @@ public class Graph implements GraphInterface{
 
     private HashMap<Integer, Set<Integer>> adjList;
     private Lock lock = new ReentrantLock();
+    private File logfile;
+    private String nodeName;
+    private DateTimeFormatter dtf;
+    private LocalDateTime now;
+    private long start;
 
 
-    public Graph() throws RemoteException {
-        adjList = new HashMap<Integer, Set<Integer>>();
+    public Graph(String nodeName) throws FileNotFoundException, RemoteException, IOException {
+        this.nodeName = nodeName;
+        logfile = new File("log0");
+        if(logfile.exists()){
+            logfile.delete();
+        }
+        logfile.createNewFile();
+        dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        now = LocalDateTime.now();
+        this.logResults(dtf.format(now) + " Node " + nodeName + " starting \n");
+
+        adjList = new HashMap<>();
         Scanner scan = new Scanner(System.in);
+        start = System.nanoTime();
         this.readInitialGraph(scan);
-        System.out.println("R");
+        start = System.nanoTime() - start;
+        now = LocalDateTime.now();
+        this.logResults(dtf.format(now) + " R Initialization time(ns): " + start + "\n");
         scan.close();
     }
 
 
-    public Graph(String path) throws FileNotFoundException, RemoteException {
-        adjList = new HashMap<Integer, Set<Integer>>();
+    public Graph(String path, String nodeName) throws FileNotFoundException, RemoteException, IOException {
+        this.nodeName = nodeName;
+        logfile = new File("log0");
+        if(logfile.exists()){
+            logfile.delete();
+        }
+        logfile.createNewFile();
+        dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        now = LocalDateTime.now();
+        this.logResults(dtf.format(now) + " Node " + nodeName + " starting \n");
+
+        adjList = new HashMap<>();
         File file = new File(path);
         Scanner scan = new Scanner(file);
+        start = System.nanoTime();
         this.readInitialGraph(scan);
-        System.out.println("R");
+        start = System.nanoTime() - start;
+        now = LocalDateTime.now();
+        this.logResults(dtf.format(now) + " R Initialization time(ns): " + start + "\n");
         scan.close();
-        printGraph();
     }
     private void printGraph(){
         for(int n : this.adjList.keySet()){
@@ -51,10 +85,9 @@ public class Graph implements GraphInterface{
 
 
     private int query(int n1, int n2){
-
-        HashMap<Integer, Integer> pred = new HashMap<Integer, Integer>();
-        HashMap<Integer, Integer> dist = new HashMap<Integer, Integer>();
-        Queue<Integer> queue = new LinkedList<Integer>();
+        HashMap<Integer, Integer> pred = new HashMap<>();
+        HashMap<Integer, Integer> dist = new HashMap<>();
+        Queue<Integer> queue = new LinkedList<>();
         queue.add(n1);
         pred.put(n1, -1);
         dist.put(n1, 0);
@@ -63,16 +96,10 @@ public class Graph implements GraphInterface{
             return -1;
         }
         while(!queue.isEmpty()){
-            //do{
-                //if(queue.isEmpty())
-               //     return -1;
-                cur = queue.poll();
-            //}while(!this.adjList.containsKey(cur));
+            cur = queue.poll();
             if(cur == n2) return dist.get(n2);
             for(int n : this.adjList.get(cur)){
                 if(pred.containsKey(n)) continue;
-                if(!this.adjList.containsKey(n))
-                    System.out.println("-->"+n);
                 queue.add(n);
                 pred.put(n, cur);
                 dist.put(n, 1 + dist.get(cur));
@@ -82,8 +109,8 @@ public class Graph implements GraphInterface{
     }
 
     private void add(int n1, int n2) throws RemoteException {
-        if(!adjList.containsKey(n1)) adjList.put(n1, new HashSet<Integer>());
-        if(!adjList.containsKey(n2)) adjList.put(n2, new HashSet<Integer>());
+        if(!adjList.containsKey(n1)) adjList.put(n1, new HashSet<>());
+        if(!adjList.containsKey(n2)) adjList.put(n2, new HashSet<>());
         adjList.get(n1).add(n2);
     }
 
@@ -101,9 +128,12 @@ public class Graph implements GraphInterface{
     }
 
 
-    public String executeQuery(String queries) throws RemoteException{
+    public String executeQuery(String queries, String clientNode) throws RemoteException, IOException{
         lock.lock();
         StringBuilder res = new StringBuilder();
+        now = LocalDateTime.now();
+        this.logResults(dtf.format(now) + ": Receiving batch from node " + clientNode + "\n" + queries + "\n");
+        start = System.nanoTime();
         try{
             String[] qs = queries.split("\n");
             String[] qSplit;
@@ -121,6 +151,16 @@ public class Graph implements GraphInterface{
         }finally {
             lock.unlock();
         }
-        return res.toString();
+        start = System.nanoTime() - start;
+        String result = res.toString();
+        now = LocalDateTime.now();
+        this.logResults(dtf.format(now) + ": Sending response to node " + clientNode + " Execution time(ns): " + start + "\n" + result + "\n");
+        return result;
+    }
+
+    private void logResults(String res) throws IOException {
+        FileWriter fw = new FileWriter(this.logfile,true);
+        fw.append(res);
+        fw.close();
     }
 }

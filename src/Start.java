@@ -20,7 +20,7 @@ public class Start {
     }
     public static void main(String[] args) throws RemoteException, FileNotFoundException, InterruptedException {
         // Read System's Properties
-        Scanner scan = new Scanner(new File("D:\\aa\\DynamicGraphShortestPath\\src\\system.properties"));
+        Scanner scan = new Scanner(new File("system.properties"));
         HashMap<String, String> prop = readProps(scan);
         scan.close();
 
@@ -33,13 +33,12 @@ public class Start {
             @Override
             public void run() {
                 new Server(Integer.parseInt(prop.get("GSP.server.port")), prop.get("GSP.server"),
-                        prop.get("GSP.node0"), "D:\\aa\\DynamicGraphShortestPath\\input");
+                        prop.get("GSP.node0"), "input.txt");
             }
         });
 
         // Paths to files with randomly generated queries
-        String[] qFiles = {"D:\\aa\\DynamicGraphShortestPath\\src\\MyFile.txt",
-                            "D:\\aa\\DynamicGraphShortestPath\\src\\MyFile1.txt"};
+        String[] qFiles = {"addRemove.txt", "query.txt"};
 
         // Create clients' nodes (threads)
         Thread[] clientsNodes = new Thread[Integer.parseInt(prop.get("GSP.numberOfnodes")) - 1];

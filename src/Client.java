@@ -15,33 +15,36 @@ public class Client {
     private File logFile;
     private List<String> addRemove, query;
     private Random rand;
-    private String nodeName;
     public Client(String ip, String[] qFiles, int nodeId, String nodeName) throws RemoteException, NotBoundException {
         try{
             Registry registry = LocateRegistry.getRegistry(ip);
             GraphInterface stub = (GraphInterface) registry.lookup("Update");
-            this.nodeName = nodeName;
             long start;
             this.logFile = new File("log" + nodeId);
+            if(logFile.exists()){
+                logFile.delete();
+            }
+            logFile.createNewFile();
             this.rand = new Random(nodeId);
             this.addRemove = this.readCommands(qFiles[0]);
             this.query = this.readCommands(qFiles[1]);
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now;
+            this.logResults(dtf.format(LocalDateTime.now()) + " Node " + nodeName + " starting\n");
             while(true) {
                 String queries = this.readQueries(0.5f);
                 System.out.println(queries);
                 now = LocalDateTime.now();
                 start = System.nanoTime();
-                String res = stub.executeQuery(queries);
+                String res = stub.executeQuery(queries, nodeName);
                 start = System.nanoTime() - start;
-                this.logResults(dtf.format(now) + ": sending batch\n" + queries + "\n");
+                this.logResults(dtf.format(now) + ": Sending batch\n" + queries + "\n");
                 System.out.println("result");
                 System.out.println(res);
                 System.out.println("took ns: " + start);
                 now = LocalDateTime.now();
-                this.logResults(dtf.format(now) + ": Received response " + "Response time(ns):" + start + "\n" + res + "\n");
+                this.logResults(dtf.format(now) + ": Received response " + "Response time(ns): " + start + "\n" + res + "\n");
                 // Sleep, choose a random amount first
                 Thread.sleep(rand.nextInt(1000));
             }

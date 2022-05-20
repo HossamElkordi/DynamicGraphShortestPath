@@ -1,6 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -10,24 +14,53 @@ public class GraphVariant implements GraphInterface{
     private HashMap<Integer, Set<Integer>> adjList;
     private Map<Integer, Map<Integer, Integer>> distances;
     private Lock lock = new ReentrantLock();
+    private File logfile;
+    private String nodeName;
+    private DateTimeFormatter dtf;
+    private LocalDateTime now;
+    private long start;
 
-    public GraphVariant() throws RemoteException {
+    public GraphVariant(String nodeName) throws FileNotFoundException, RemoteException, IOException {
+        this.nodeName = nodeName;
+        logfile = new File("log0");
+        if(logfile.exists()){
+            logfile.delete();
+        }
+        logfile.createNewFile();
+        dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        this.logResults(dtf.format(LocalDateTime.now()) + " Node " + nodeName + " starting \n");
+
         adjList = new HashMap<>();
         Scanner scan = new Scanner(System.in);
+        start = System.nanoTime();
         this.readInitialGraph(scan);
+        this.distances = totalDistances();
+        start = System.nanoTime() - start;
+        this.logResults(dtf.format(LocalDateTime.now()) + " R Initialization time(ns): " + start + "\n");
         scan.close();
-        printGraph();
-        distances = totalDistances();
     }
 
-    public GraphVariant(String path) throws FileNotFoundException, RemoteException {
+    public GraphVariant(String path, String nodeName) throws FileNotFoundException, RemoteException, IOException {
+        this.nodeName = nodeName;
+        logfile = new File("log0");
+        if(logfile.exists()){
+            logfile.delete();
+        }
+        logfile.createNewFile();
+        dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        now = LocalDateTime.now();
+        this.logResults(dtf.format(now) + " Node " + nodeName + " starting \n");
+
         adjList = new HashMap<>();
         File file = new File(path);
         Scanner scan = new Scanner(file);
+        start = System.nanoTime();
         this.readInitialGraph(scan);
+        this.distances = totalDistances();
+        start = System.nanoTime() - start;
+        now = LocalDateTime.now();
+        this.logResults(dtf.format(now) + " R Initialization time(ns): " + start + "\n");
         scan.close();
-        printGraph();
-        distances = totalDistances();
     }
 
     private void printGraph(){
@@ -117,9 +150,12 @@ public class GraphVariant implements GraphInterface{
         distances = totalDistances();
     }
 
-    public String executeQuery(String queries) throws RemoteException {
+    public String executeQuery(String queries, String clientNode) throws RemoteException, IOException {
         lock.lock();
         StringBuilder res = new StringBuilder();
+        now = LocalDateTime.now();
+        this.logResults(dtf.format(now) + ": Receiving batch from node " + clientNode + "\n" + queries + "\n");
+        start = System.nanoTime();
         try{
             String[] qs = queries.split("\n");
             String[] qSplit;
@@ -137,6 +173,16 @@ public class GraphVariant implements GraphInterface{
         }finally {
             lock.unlock();
         }
-        return res.toString();
+        start = System.nanoTime() - start;
+        String result = res.toString();
+        now = LocalDateTime.now();
+        this.logResults(dtf.format(now) + ": Sending response to node " + clientNode + " Execution time(ns): " + start + "\n" + result + "\n");
+        return result;
+    }
+
+    private void logResults(String res) throws IOException {
+        FileWriter fw = new FileWriter(this.logfile,true);
+        fw.append(res);
+        fw.close();
     }
 }

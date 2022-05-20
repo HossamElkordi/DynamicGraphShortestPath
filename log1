@@ -1,0 +1,1333 @@
+2022/05/20 17:18:35 Node client1 starting
+2022/05/20 17:18:35: Sending batch
+R 9 7
+A 9 4
+A 3 4
+A 5 5
+Q 10 3
+Q 13 4
+Q 9 5
+R 0 3
+F
+2022/05/20 17:18:35: Received response Response time(ns): 13963632
+-1
+-1
+-1
+
+2022/05/20 17:18:36: Sending batch
+Q 3 7
+Q 12 17
+A 1 6
+Q 5 0
+Q 6 5
+R 7 9
+A 7 4
+A 3 9
+A 7 0
+R 6 8
+F
+2022/05/20 17:18:36: Received response Response time(ns): 6224862
+3
+-1
+-1
+-1
+
+2022/05/20 17:18:36: Sending batch
+A 2 10
+R 3 1
+Q 10 3
+Q 9 5
+R 5 2
+A 3 4
+A 3 6
+Q 3 5
+F
+2022/05/20 17:18:36: Received response Response time(ns): 19424318
+-1
+-1
+-1
+
+2022/05/20 17:18:37: Sending batch
+Q 0 2
+R 3 6
+Q 6 5
+A 4 3
+Q 20 4
+R 10 4
+A 4 9
+R 4 8
+Q 1 7
+F
+2022/05/20 17:18:37: Received response Response time(ns): 4957987
+-1
+-1
+-1
+-1
+
+2022/05/20 17:18:37: Sending batch
+A 7 10
+Q 6 6
+Q 3 2
+R 0 2
+R 0 7
+A 10 6
+A 2 1
+R 7 3
+Q 1 6
+Q 3 2
+A 10 3
+Q 0 0
+F
+2022/05/20 17:18:37: Received response Response time(ns): 4512562
+0
+3
+5
+3
+-1
+
+2022/05/20 17:18:38: Sending batch
+Q 13 4
+A 3 3
+A 1 6
+Q 7 6
+Q 9 8
+Q 15 16
+R 0 0
+R 7 3
+R 10 9
+F
+2022/05/20 17:18:38: Received response Response time(ns): 4496169
+-1
+1
+-1
+-1
+
+2022/05/20 17:18:38: Sending batch
+A 5 6
+Q 10 19
+Q 6 4
+A 4 9
+Q 6 2
+Q 2 0
+Q 7 6
+A 2 3
+R 6 10
+R 1 3
+A 3 0
+F
+2022/05/20 17:18:38: Received response Response time(ns): 5632130
+-1
+2
+4
+-1
+1
+
+2022/05/20 17:18:39: Sending batch
+A 4 0
+Q 9 5
+A 5 2
+R 9 2
+R 1 1
+Q 6 7
+Q 7 6
+R 2 5
+R 2 1
+Q 4 7
+R 0 8
+Q 0 4
+F
+2022/05/20 17:18:39: Received response Response time(ns): 4663503
+4
+-1
+-1
+-1
+-1
+
+2022/05/20 17:18:39: Sending batch
+Q 1 6
+Q 10 8
+A 8 10
+R 9 1
+R 6 9
+Q 3 3
+Q 1 9
+A 2 7
+R 10 6
+F
+2022/05/20 17:18:39: Received response Response time(ns): 4408681
+-1
+3
+0
+3
+
+2022/05/20 17:18:39: Sending batch
+R 8 10
+Q 14 4
+Q 3 10
+A 3 4
+R 8 8
+A 9 9
+A 10 4
+Q 9 8
+A 5 7
+Q 7 6
+Q 1 1
+F
+2022/05/20 17:18:39: Received response Response time(ns): 3473647
+-1
+2
+4
+-1
+0
+
+2022/05/20 17:18:40: Sending batch
+Q 9 0
+A 5 10
+A 2 2
+A 0 9
+A 7 5
+Q 1 2
+Q 6 3
+A 3 4
+A 0 4
+Q 7 6
+Q 5 1
+F
+2022/05/20 17:18:40: Received response Response time(ns): 5503490
+-1
+1
+-1
+1
+2
+
+2022/05/20 17:18:40: Sending batch
+Q 3 10
+Q 7 9
+R 0 2
+Q 0 5
+A 9 9
+Q 4 2
+A 5 0
+R 7 5
+Q 3 8
+A 4 10
+A 6 10
+A 7 9
+F
+2022/05/20 17:18:41: Received response Response time(ns): 3095559
+2
+2
+5
+2
+4
+
+2022/05/20 17:18:41: Sending batch
+Q 7 5
+Q 4 10
+A 8 8
+R 8 2
+A 2 8
+Q 12 10
+R 0 9
+Q 9 4
+R 5 9
+A 8 10
+Q 4 17
+A 10 6
+F
+2022/05/20 17:18:41: Received response Response time(ns): 3114358
+4
+1
+-1
+4
+-1
+
+2022/05/20 17:18:41: Sending batch
+Q 12 0
+A 8 5
+Q 9 4
+R 8 0
+Q 3 8
+R 1 4
+A 2 8
+Q 3 2
+A 10 10
+A 5 7
+F
+2022/05/20 17:18:41: Received response Response time(ns): 5920092
+-1
+2
+4
+3
+
+2022/05/20 17:18:41: Sending batch
+A 2 5
+R 5 7
+Q 1 10
+R 10 3
+R 3 3
+A 6 6
+Q 6 8
+Q 14 4
+R 5 3
+Q 8 4
+Q 4 7
+F
+2022/05/20 17:18:42: Received response Response time(ns): 4166273
+2
+4
+-1
+1
+3
+
+2022/05/20 17:18:42: Sending batch
+A 9 9
+Q 13 10
+A 0 6
+A 9 7
+A 3 0
+R 10 0
+Q 0 4
+Q 10 7
+A 4 4
+Q 4 8
+Q 0 8
+R 0 9
+F
+2022/05/20 17:18:42: Received response Response time(ns): 9183064
+-1
+1
+2
+3
+3
+
+2022/05/20 17:18:42: Sending batch
+Q 3 5
+Q 8 3
+A 6 7
+Q 9 1
+A 8 7
+Q 8 9
+R 1 4
+A 3 9
+A 9 1
+F
+2022/05/20 17:18:42: Received response Response time(ns): 3594535
+4
+2
+2
+2
+
+2022/05/20 17:18:43: Sending batch
+Q 7 6
+A 7 4
+R 2 6
+Q 19 7
+Q 9 3
+A 8 7
+Q 1 9
+R 3 2
+A 1 6
+Q 6 3
+A 4 0
+F
+2022/05/20 17:18:43: Received response Response time(ns): 4095534
+1
+-1
+1
+3
+1
+
+2022/05/20 17:18:43: Sending batch
+R 10 9
+Q 6 8
+Q 2 4
+R 9 4
+R 9 0
+Q 1 6
+A 10 7
+Q 0 2
+A 0 6
+Q 1 8
+A 0 4
+F
+2022/05/20 17:18:43: Received response Response time(ns): 4651197
+2
+1
+1
+3
+2
+
+2022/05/20 17:18:43: Sending batch
+A 10 6
+Q 4 1
+R 10 6
+Q 10 18
+A 7 0
+R 9 7
+Q 9 2
+Q 4 4
+R 4 9
+F
+2022/05/20 17:18:43: Received response Response time(ns): 3907050
+1
+-1
+2
+0
+
+2022/05/20 17:18:44: Sending batch
+Q 6 8
+A 5 7
+A 10 1
+R 6 8
+A 5 6
+Q 6 2
+A 0 6
+Q 2 7
+F
+2022/05/20 17:18:44: Received response Response time(ns): 3883721
+2
+1
+1
+
+2022/05/20 17:18:44: Sending batch
+R 8 6
+R 5 9
+Q 9 1
+R 4 8
+Q 1 8
+R 6 0
+Q 2 10
+A 8 5
+F
+2022/05/20 17:18:44: Received response Response time(ns): 4178653
+1
+2
+2
+
+2022/05/20 17:18:45: Sending batch
+A 8 7
+R 2 0
+A 6 4
+Q 1 9
+Q 3 3
+Q 3 8
+Q 3 8
+A 7 2
+Q 18 14
+A 3 2
+R 4 3
+R 10 10
+F
+2022/05/20 17:18:45: Received response Response time(ns): 6626109
+2
+0
+3
+3
+-1
+
+2022/05/20 17:18:46: Sending batch
+Q 8 9
+R 1 3
+R 1 9
+Q 18 12
+R 5 7
+A 2 8
+Q 0 4
+R 6 9
+F
+2022/05/20 17:18:46: Received response Response time(ns): 4902565
+2
+-1
+1
+
+2022/05/20 17:18:46: Sending batch
+Q 10 19
+R 7 1
+A 9 4
+R 7 5
+Q 4 7
+R 8 5
+A 0 6
+Q 7 2
+F
+2022/05/20 17:18:46: Received response Response time(ns): 2678771
+-1
+2
+1
+
+2022/05/20 17:18:47: Sending batch
+R 4 9
+R 1 3
+Q 7 9
+R 9 0
+A 10 9
+Q 9 5
+Q 5 3
+A 7 4
+Q 2 4
+Q 13 19
+A 10 1
+A 4 9
+F
+2022/05/20 17:18:47: Received response Response time(ns): 4666222
+1
+2
+2
+1
+-1
+
+2022/05/20 17:18:47: Sending batch
+Q 9 2
+Q 6 2
+A 2 3
+Q 6 3
+Q 2 9
+A 1 8
+R 2 0
+A 0 4
+A 6 2
+F
+2022/05/20 17:18:47: Received response Response time(ns): 2588892
+2
+1
+1
+2
+
+2022/05/20 17:18:47: Sending batch
+R 1 4
+Q 6 2
+Q 5 5
+R 7 0
+A 10 0
+A 8 6
+R 6 6
+Q 7 10
+Q 0 9
+F
+2022/05/20 17:18:47: Received response Response time(ns): 3099498
+1
+0
+2
+2
+
+2022/05/20 17:18:48: Sending batch
+Q 9 0
+A 4 6
+A 8 7
+Q 5 9
+R 4 5
+R 2 6
+A 3 3
+Q 1 4
+F
+2022/05/20 17:18:48: Received response Response time(ns): 2337191
+2
+2
+2
+
+2022/05/20 17:18:48: Sending batch
+Q 1 10
+R 8 10
+Q 9 4
+R 5 6
+Q 5 10
+R 10 7
+A 4 8
+A 5 2
+R 2 5
+Q 4 5
+Q 6 5
+F
+2022/05/20 17:18:48: Received response Response time(ns): 4124796
+2
+1
+1
+2
+2
+
+2022/05/20 17:18:49: Sending batch
+R 6 8
+Q 19 13
+Q 0 2
+Q 6 4
+Q 8 0
+A 3 4
+A 9 7
+R 10 6
+A 9 6
+F
+2022/05/20 17:18:49: Received response Response time(ns): 4291077
+-1
+2
+1
+1
+
+2022/05/20 17:18:49: Sending batch
+R 5 7
+A 4 9
+Q 3 7
+Q 5 5
+Q 8 2
+A 2 8
+A 1 2
+A 3 4
+F
+2022/05/20 17:18:49: Received response Response time(ns): 6106650
+2
+0
+2
+
+2022/05/20 17:18:50: Sending batch
+R 6 4
+Q 4 9
+A 3 2
+R 10 0
+Q 3 4
+A 2 8
+A 0 6
+Q 3 3
+R 6 6
+R 4 9
+Q 10 8
+Q 3 2
+F
+2022/05/20 17:18:50: Received response Response time(ns): 3217041
+1
+1
+0
+3
+1
+
+2022/05/20 17:18:50: Sending batch
+R 4 8
+A 1 6
+R 8 2
+A 6 7
+Q 9 1
+Q 2 6
+Q 0 6
+Q 7 10
+A 10 5
+R 6 6
+F
+2022/05/20 17:18:50: Received response Response time(ns): 4562019
+1
+2
+1
+2
+
+2022/05/20 17:18:51: Sending batch
+A 9 10
+R 1 4
+A 8 9
+R 8 4
+R 6 8
+Q 12 1
+Q 3 8
+R 2 9
+Q 0 6
+Q 15 16
+Q 13 14
+F
+2022/05/20 17:18:51: Received response Response time(ns): 5069687
+-1
+2
+1
+-1
+-1
+
+2022/05/20 17:18:51: Sending batch
+R 1 7
+Q 6 14
+Q 17 5
+A 10 6
+Q 9 10
+R 6 9
+R 7 10
+Q 10 3
+R 10 9
+A 1 7
+F
+2022/05/20 17:18:51: Received response Response time(ns): 5387307
+-1
+-1
+1
+1
+
+2022/05/20 17:18:52: Sending batch
+R 0 2
+Q 3 1
+Q 11 19
+A 8 8
+R 2 5
+Q 4 1
+A 9 0
+Q 7 10
+A 3 2
+F
+2022/05/20 17:18:52: Received response Response time(ns): 4143495
+1
+-1
+1
+2
+
+2022/05/20 17:18:52: Sending batch
+A 1 2
+A 4 8
+Q 8 3
+Q 0 10
+R 9 2
+R 1 6
+Q 14 3
+Q 10 9
+A 3 3
+A 8 5
+Q 3 10
+F
+2022/05/20 17:18:52: Received response Response time(ns): 4018541
+2
+2
+-1
+2
+1
+
+2022/05/20 17:18:53: Sending batch
+Q 19 7
+Q 1 7
+R 1 6
+Q 2 8
+R 10 9
+R 4 6
+Q 2 10
+R 3 6
+A 2 10
+F
+2022/05/20 17:18:53: Received response Response time(ns): 3748208
+-1
+1
+1
+1
+
+2022/05/20 17:18:53: Sending batch
+Q 9 9
+A 4 3
+R 10 3
+A 0 6
+Q 4 8
+A 5 7
+R 7 8
+Q 1 1
+Q 2 7
+Q 0 3
+R 6 8
+F
+2022/05/20 17:18:53: Received response Response time(ns): 5330094
+0
+1
+0
+1
+2
+
+2022/05/20 17:18:53: Sending batch
+A 1 9
+Q 3 2
+Q 4 0
+A 0 9
+Q 8 9
+Q 8 2
+R 9 6
+R 4 7
+R 4 0
+F
+2022/05/20 17:18:53: Received response Response time(ns): 2806524
+1
+1
+1
+2
+
+2022/05/20 17:18:54: Sending batch
+Q 6 3
+R 9 1
+Q 0 7
+A 2 7
+R 8 10
+R 10 10
+Q 1 6
+Q 3 2
+A 8 4
+Q 10 0
+A 1 1
+F
+2022/05/20 17:18:54: Received response Response time(ns): 7310522
+1
+2
+1
+1
+2
+
+2022/05/20 17:18:54: Sending batch
+A 8 5
+R 5 9
+Q 9 9
+A 0 8
+R 2 9
+Q 14 8
+Q 6 3
+Q 2 5
+Q 2 4
+A 10 0
+A 4 9
+F
+2022/05/20 17:18:54: Received response Response time(ns): 6606580
+0
+-1
+1
+2
+1
+
+2022/05/20 17:18:55: Sending batch
+A 2 3
+Q 4 2
+Q 14 8
+Q 3 2
+A 1 3
+Q 8 1
+R 5 6
+A 10 2
+A 7 5
+F
+2022/05/20 17:18:55: Received response Response time(ns): 3783540
+2
+-1
+1
+2
+
+2022/05/20 17:18:55: Sending batch
+Q 10 6
+Q 0 6
+R 2 7
+R 1 6
+Q 6 2
+R 1 4
+Q 7 7
+Q 9 8
+A 10 5
+A 2 5
+R 0 6
+F
+2022/05/20 17:18:55: Received response Response time(ns): 3459043
+1
+1
+1
+0
+3
+
+2022/05/20 17:18:55: Sending batch
+Q 6 3
+Q 4 0
+A 0 6
+Q 10 19
+A 4 6
+R 2 6
+A 9 7
+Q 1 1
+A 8 7
+Q 11 17
+R 7 9
+F
+2022/05/20 17:18:55: Received response Response time(ns): 4254802
+1
+1
+-1
+0
+-1
+
+2022/05/20 17:18:56: Sending batch
+Q 10 6
+A 6 3
+R 2 2
+A 8 7
+Q 1 1
+Q 1 4
+R 10 7
+A 4 10
+Q 3 6
+A 9 3
+F
+2022/05/20 17:18:56: Received response Response time(ns): 3176583
+1
+0
+2
+2
+
+2022/05/20 17:18:57: Sending batch
+A 1 6
+A 4 9
+Q 6 1
+Q 3 1
+Q 0 0
+Q 5 9
+A 10 6
+A 1 9
+R 4 8
+Q 14 9
+A 6 10
+F
+2022/05/20 17:18:57: Received response Response time(ns): 5637410
+2
+1
+0
+2
+-1
+
+2022/05/20 17:18:58: Sending batch
+Q 4 10
+Q 4 9
+R 10 10
+Q 2 5
+Q 0 4
+R 6 0
+R 5 2
+A 7 6
+A 3 6
+F
+2022/05/20 17:18:58: Received response Response time(ns): 3398320
+1
+1
+1
+1
+
+2022/05/20 17:18:58: Sending batch
+Q 7 5
+Q 3 1
+Q 3 1
+Q 0 2
+Q 10 9
+R 0 8
+A 9 7
+R 10 10
+R 9 4
+R 2 0
+A 5 5
+A 7 8
+F
+2022/05/20 17:18:58: Received response Response time(ns): 7689150
+1
+1
+1
+2
+2
+
+2022/05/20 17:18:58: Sending batch
+A 3 4
+Q 11 19
+R 5 6
+A 6 0
+Q 10 0
+R 1 3
+A 10 7
+Q 8 10
+F
+2022/05/20 17:18:58: Received response Response time(ns): 2407221
+-1
+1
+2
+
+2022/05/20 17:18:59: Sending batch
+R 0 8
+R 7 10
+R 1 3
+Q 7 1
+R 3 0
+Q 5 8
+Q 5 10
+A 3 2
+Q 0 10
+R 1 4
+F
+2022/05/20 17:18:59: Received response Response time(ns): 3442508
+2
+1
+1
+2
+
+2022/05/20 17:19:00: Sending batch
+A 5 7
+Q 6 5
+A 3 9
+R 3 4
+A 0 4
+R 3 8
+R 4 6
+Q 9 10
+Q 3 5
+Q 11 11
+Q 3 0
+F
+2022/05/20 17:19:00: Received response Response time(ns): 5302760
+2
+1
+2
+-1
+2
+
+2022/05/20 17:19:01: Sending batch
+A 2 10
+R 0 10
+Q 6 2
+Q 15 0
+A 3 0
+R 9 2
+Q 7 0
+A 0 4
+R 1 0
+Q 9 8
+F
+2022/05/20 17:19:01: Received response Response time(ns): 2024536
+1
+-1
+2
+2
+
+2022/05/20 17:19:02: Sending batch
+A 9 9
+A 7 6
+A 2 8
+R 7 9
+Q 4 7
+Q 8 7
+A 6 4
+Q 4 8
+R 10 0
+Q 10 8
+F
+2022/05/20 17:19:02: Received response Response time(ns): 5082175
+2
+2
+2
+2
+
+2022/05/20 17:19:02: Sending batch
+A 7 5
+Q 1 4
+Q 14 4
+A 1 9
+R 6 10
+A 6 2
+R 5 3
+R 6 9
+Q 1 4
+Q 7 1
+Q 2 7
+A 6 6
+F
+2022/05/20 17:19:02: Received response Response time(ns): 6685794
+2
+-1
+2
+2
+2
+
+2022/05/20 17:19:02: Sending batch
+Q 11 19
+Q 2 5
+Q 3 6
+R 5 9
+A 10 6
+R 1 4
+Q 13 0
+R 1 0
+R 4 8
+A 8 6
+F
+2022/05/20 17:19:02: Received response Response time(ns): 4607936
+-1
+1
+1
+-1
+
+2022/05/20 17:19:02: Sending batch
+A 3 9
+R 10 9
+A 6 10
+Q 3 6
+Q 0 0
+A 5 4
+A 4 6
+Q 4 1
+A 2 8
+Q 4 0
+F
+2022/05/20 17:19:02: Received response Response time(ns): 3141033
+1
+0
+2
+2
+
+2022/05/20 17:19:02: Sending batch
+R 8 9
+Q 9 10
+Q 9 8
+A 5 4
+A 4 4
+Q 5 10
+Q 7 0
+A 1 6
+R 8 6
+R 4 4
+F
+2022/05/20 17:19:02: Received response Response time(ns): 2259650
+1
+2
+1
+2
+
+2022/05/20 17:19:02: Sending batch
+A 5 7
+R 6 9
+Q 0 9
+Q 9 4
+Q 2 4
+A 8 10
+R 5 8
+A 2 10
+A 9 0
+Q 9 7
+R 8 0
+Q 10 10
+F
+2022/05/20 17:19:03: Received response Response time(ns): 5707936
+1
+1
+1
+1
+0
+
+2022/05/20 17:19:03: Sending batch
+Q 8 0
+A 10 9
+A 0 0
+R 8 4
+A 7 9
+Q 9 9
+A 2 3
+Q 8 1
+Q 7 5
+F
+2022/05/20 17:19:03: Received response Response time(ns): 3165784
+2
+0
+4
+1
+
+2022/05/20 17:19:03: Sending batch
+A 7 5
+Q 5 10
+R 6 8
+Q 9 5
+A 5 6
+A 0 4
+A 5 0
+Q 3 7
+F
+2022/05/20 17:19:03: Received response Response time(ns): 2534890
+1
+2
+2
+
+2022/05/20 17:19:04: Sending batch
+Q 0 7
+R 5 3
+R 6 8
+R 7 4
+Q 5 0
+Q 1 6
+R 6 6
+Q 8 1
+A 7 5
+A 6 0
+F
+2022/05/20 17:19:04: Received response Response time(ns): 3561623
+2
+1
+1
+4
+
+2022/05/20 17:19:05: Sending batch
+A 4 4
+Q 4 1
+Q 12 17
+Q 3 0
+Q 10 15
+R 9 0
+A 2 3
+R 6 9
+R 4 3
+A 0 9
+F
+2022/05/20 17:19:05: Received response Response time(ns): 5055140
+3
+-1
+1
+-1
+
+2022/05/20 17:19:05: Sending batch
+Q 3 3
+R 0 2
+Q 5 9
+R 7 9
+R 6 8
+R 0 8
+A 3 6
+A 4 9
+R 7 2
+Q 3 1
+Q 6 2
+Q 16 4
+F
+2022/05/20 17:19:05: Received response Response time(ns): 4922186
+0
+2
+1
+1
+-1
+
+2022/05/20 17:19:06: Sending batch
+R 6 7
+A 1 10
+Q 0 0
+Q 10 7
+R 8 10
+A 7 2
+A 1 7
+Q 9 8
+F
+2022/05/20 17:19:06: Received response Response time(ns): 3097129
+0
+1
+2
+
+2022/05/20 17:19:06: Sending batch
+R 1 4
+Q 4 4
+R 8 10
+Q 1 10
+A 1 6
+R 8 9
+R 9 5
+Q 6 4
+Q 8 9
+R 5 2
+Q 10 4
+F
+2022/05/20 17:19:06: Received response Response time(ns): 6259258
+0
+1
+1
+3
+2
+
+2022/05/20 17:19:07: Sending batch
+A 1 0
+A 0 6
+Q 3 1
+Q 3 3
+Q 2 2
+A 3 2
+Q 10 2
+R 10 4
+R 9 9
+F
+2022/05/20 17:19:07: Received response Response time(ns): 2926595
+1
+0
+0
+2
+
+2022/05/20 17:19:08: Sending batch
+Q 5 1
+A 3 0
+Q 13 1
+Q 2 10
+A 2 3
+Q 10 6
+A 0 5
+A 10 0
+A 8 6
+F
+2022/05/20 17:19:08: Received response Response time(ns): 2798502
+2
+-1
+2
+1
+
+2022/05/20 17:19:08: Sending batch
+Q 1 4
+A 9 0
+R 1 4
+Q 2 7
+Q 9 4
+R 1 9
+A 6 10
+R 5 2
+Q 0 1
+F
+2022/05/20 17:19:08: Received response Response time(ns): 2918327
+2
+1
+1
+2
+
+2022/05/20 17:19:08: Sending batch
+R 5 8
+Q 3 8
+Q 3 5
+A 7 4
+Q 4 10
+R 2 1
+A 6 9
+R 10 2
+Q 8 4
+R 0 9
+Q 11 4
+F
+2022/05/20 17:19:08: Received response Response time(ns): 2240393
+2
+2
+1
+1
+-1
+
+2022/05/20 17:19:09: Sending batch
+R 1 3
+Q 6 0
+Q 0 4
+A 1 1
+Q 2 5
+R 7 3
+A 4 9
+R 7 9
+F
+2022/05/20 17:19:09: Received response Response time(ns): 4007533
+1
+1
+1
+
+2022/05/20 17:19:10: Sending batch
+A 3 2
+Q 1 7
+R 4 7
+Q 9 7
+Q 3 2
+R 4 8
+Q 1 6
+A 5 1
+R 10 10
+F
+2022/05/20 17:19:10: Received response Response time(ns): 3598897
+1
+1
+1
+2
+

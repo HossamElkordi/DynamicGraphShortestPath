@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) throws FileNotFoundException, RemoteException {
-        GClass g = new GClass("D:\\aa\\DynamicGraphShortestPath\\input");
+        GClass g = new GClass("D:\\aa\\DynamicGraphShortestPath\\input.txt");
         g.printGraph();
         System.out.println(g.query(1, 3));
         g.remove(4,1);

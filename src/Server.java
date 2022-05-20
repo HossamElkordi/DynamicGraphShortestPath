@@ -4,12 +4,10 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class Server{
 
-    String nodeName;
     public Server(int port, String ip, String nodeName, String initialGraph) {
         try {
-            this.nodeName = nodeName;
             // Instantiating the implementation class
-            Graph g = new Graph(initialGraph);
+            GraphVariant g = new GraphVariant(initialGraph, nodeName);
 
             // Exporting the object of implementation class
             // (here we are exporting the remote object to the stub)
